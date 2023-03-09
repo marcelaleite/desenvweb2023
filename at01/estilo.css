@@ -1,0 +1,98 @@
+body{
+    font-family: 'Abel', sans-serif; 
+}
+h1{
+    font-family: 'Red Hat Display', sans-serif;
+}
+
+h2{
+    font-family: 'Red Hat Display', sans-serif;
+}
+
+.col-1{ width: 8.33%; }
+.col-2{ width: 16.66%; }
+.col-3{ width: 24.99%; }
+.col-4{ width: 33.32%; }
+.col-5{ width: 41.65%; }
+.col-6{ width: 49.98%; }
+.col-7{ width: 58.31%; }
+.col-8{ width: 66.64%; }
+.col-9{ width: 74.97%; }
+.col-10{ width: 83.3%; }
+.col-11{ width: 91.63%; }
+.col-12{ width: 100%; }
+
+* {     box-sizing: border-box; }
+[class*="col"]{
+    float:left;
+    padding: 5px;
+    /* border: 1px solid black; */
+}
+.row{ clear: both; }
+.foto {  width: 100%; }
+
+.dados tr:nth-child(even){
+    background-color: antiquewhite;
+}
+
+.menu{
+    display: block;
+    width: 100%;
+    height: 70px;   
+    border-bottom:1px solid rgb(244, 148, 29);
+}
+.menu ul > li{
+    display: block;
+    float: left;
+    padding: 15px;
+}
+.menu ul > li:hover{
+    background-color: gold;
+    animation: minhanimacao 1s linear alternate-reverse infinite;
+}
+@keyframes minhanimacao {
+    from {background-color: gold}
+    to {background-color: white}
+}
+
+
+@media screen and ( max-width:500px){  /* até 500 px */
+    [class*="col"]{
+        width: 100%;
+    }
+    #colfoto {
+        position: relative;
+    }
+    #formcontato{
+        width: 33.32%; 
+    }
+}
+@media screen and (min-width: 500px){
+    #colfoto {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+    }
+    #formcontato{
+        width: 49.98%;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    #colfoto {
+        position: relative;
+
+    }
+    #formcontato{
+        width: 33.32%; 
+    }
+}
+
+.erro {
+    display: none;
+    color: red;
+}
+.erroativo {
+    display: block;
+    color: red;
+}
