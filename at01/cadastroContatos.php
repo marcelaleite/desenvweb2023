@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Abel&family=Red+Hat+Display:wght@300&display=swap" rel="stylesheet">
-   
+   <script src="scriptcontatos.js"></script>
 </head>
 <body>
     <h1>Cadastro de Amigos</h1>
@@ -65,10 +65,10 @@
                     <div class='col-4'>
                         <select name="cidade" id="cidade">
                             <option value="0">Escolha uma cidade</option>
-                            <option value="1">Rio do Sul</option>
-                            <option value="2">Aurora</option>
-                            <option value="3">Laurentino</option>
-                            <option value="4">Lontras</option>
+                            <!-- <?php // include "lista_cidades.php"; 
+                            // foreach ($cidades as $cidade)
+                                // echo "<option value={$cidade['id']}>{$cidade['nome']}</option>";
+                            ?> -->
                         </select>
                     </div>
                 </div>

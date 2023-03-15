@@ -9,6 +9,7 @@ if (!$conexao){
     $query = $conexao->prepare($consulta);
     $query->execute();
     $cidades = $query->fetchAll();
+    echo json_encode($cidades);
 }
 
 
