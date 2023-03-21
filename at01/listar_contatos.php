@@ -16,6 +16,9 @@
     <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
+    <?php 
+        include "menu.php";
+    ?>
     <h1>Contatos Cadastrados</h1>
     <div class='row'>
         <form action="" method="get">

@@ -12,13 +12,9 @@
     <script src="script.js"></script>  
 </head>
 <body>
-    <nav class="menu">
-        <ul>
-            <li id="item">Página inicial</li>
-            <li><a href='cadastroContatos.php'>Contatos</a></li>
-            <li>Sobre</li>
-        </ul>
-    </nav>
+    <?php 
+        include "menu.php";
+    ?>
     <section>
         <div class="row">
             <div class="col-6">

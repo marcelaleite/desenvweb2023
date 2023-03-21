@@ -35,10 +35,13 @@ if ($id > 0){
    <script src="scriptcontatos.js"></script>
 </head>
 <body>
+    <?php 
+        include "menu.php";
+    ?>
     <h1>Cadastro de Amigos</h1>
     <div class='row'>
         <div class='col-12'>
-            <form action="acaoContato.php" method='post'>
+            <form action="acaoContato.php" method='post' id='fcadastro' name='fcadastro'>
                 <div class='row'>
                     <div class='col-2'>
                         <label for="id">Id:</label>
@@ -134,7 +137,7 @@ if ($id > 0){
                         if (isset($contato['id'])){
                             
                     ?>                    
-                            <button name='acao' id='excluir' value='excluir' type='submit'>Excluir</button>    
+                            <button name='acao' id='excluir' form='fcadastro' value='excluir' type='submit'>Excluir</button>    
                     <?php } ?>
                     </div>
                     

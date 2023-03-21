@@ -12,6 +12,9 @@
 
 </head>
 <body>
+    <?php 
+        include "menu.php";
+    ?>
     <h1>Cadastro de Cidade</h1>
     <div class='row'>
         <div class='col-12'>

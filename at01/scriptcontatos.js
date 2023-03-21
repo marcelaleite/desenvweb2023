@@ -3,6 +3,16 @@ window.onload = (function (){
 
         popularCidades(this.value); // enviando o valor do campo como argumento
     });
+    let excluir = document.getElementById('excluir');
+    excluir.addEventListener('click',function(ev){
+        if (confirm('Deseja realmente excluir esse contato?'))
+            document.getElementById('fcadastro').submit();
+        else{
+            ev.preventDefault();
+            window.location.href = 'listar_contatos.php';
+        }
+        
+    });
 });
 
 
