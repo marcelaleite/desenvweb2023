@@ -1,3 +1,26 @@
+<?php
+$id = ($_GET['id']?$_GET['id']:0);
+
+$contato = array();
+if ($id > 0){
+
+    // buscar dados para preencher o formulário
+    // abrir conexão
+    require_once('config.inc.php');
+    $conexao = new PDO(MYSQL_DSN ,MYSQL_USUARIO, MYSQL_SENHA);
+    if (!$conexao){
+        echo 'Erro ao conectar';
+        die();   // interrompe a execução do script caso ocorra erro
+    }else{
+        $consulta = 'SELECT * FROM contatos WHERE id = :id';      
+        $query = $conexao->prepare($consulta);
+        $query->bindValue(':id',$id);
+        $query->execute();
+        $contato = $query->fetch();
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,19 +38,27 @@
     <h1>Cadastro de Amigos</h1>
     <div class='row'>
         <div class='col-12'>
-            <form action="acao.php" method='post'>
+            <form action="acaoContato.php" method='post'>
+                <div class='row'>
+                    <div class='col-2'>
+                        <label for="id">Id:</label>
+                    </div>
+                    <div class='col-10'>
+                        <input type="text" readonly name='id' id='id' value="<?php echo (isset($contato['id'])?$contato['id']:''); ?>" >
+                    </div>
+                </div>
                 <div class='row'>
                     <div class='col-2'>
                         <label for="nome">Nome:</label>
                     </div>
                     <div class='col-4'>
-                        <input type="text" name='nome' id='nome'>
+                        <input type="text" name='nome' id='nome' value="<?php echo (isset($contato['nome'])?$contato['nome']:''); ?>">
                     </div>
                     <div class='col-2'>
                         <label for="nome">Sobrenome:</label>
                     </div>
                     <div class='col-4'>
-                        <input type="text" name='sobrenome' id='sobrenome'>
+                        <input type="text" name='sobrenome' id='sobrenome' value="<?php echo (isset($contato['sobrenome'])?$contato['sobrenome']:''); ?>">
                     </div>
                 </div>
                 <div class='row'>
@@ -37,7 +68,7 @@
                         </label>
                     </div>
                     <div class='col-4'>
-                        <input type="email" name='email' id='email'>
+                        <input type="email" name='email' id='email'  value="<?php echo (isset($contato['email'])?$contato['email']:''); ?>" >
                     </div>
                     <div class='col-2'>
                         <label for="dtnasc">
@@ -45,7 +76,7 @@
                         </label>
                     </div>
                     <div class='col-4'>
-                        <input type="date" name='dtnasc' id='dtnasc'>
+                        <input type="date" name='dtnasci' id='dtnasci' value="<?php echo (isset($contato['dtnasci'])?$contato['dtnasci']:''); ?>" >
                     </div>
                 </div>
                 <div class='row'>
@@ -55,7 +86,7 @@
                         </label>
                     </div>
                     <div class='col-4'>
-                        <input type="phone" name='telefone' id='telefone'>
+                        <input type="phone" name='telefone' id='telefone'  value="<?php echo (isset($contato['telefone'])?$contato['telefone']:''); ?>" >
                     </div>
                     <div class='col-2'>
                         <label for="cidade">
@@ -63,13 +94,15 @@
                         </label>
                     </div>
                     <div class='col-4'>
-                        <select name="cidade" id="cidade">
-                            <option value="0">Escolha uma cidade</option>
+                        <input type="text" list='cidades' name='cidade' id='cidade'  value="<?php echo (isset($contato['cidade'])?$contato['cidade']:''); ?>" >
+                        <datalist id='cidades'></datalist>
+                        <!-- <select name="cidade" id="cidade">
+                            <option value="0">Escolha uma cidade</option> -->
                             <!-- <?php // include "lista_cidades.php"; 
                             // foreach ($cidades as $cidade)
                                 // echo "<option value={$cidade['id']}>{$cidade['nome']}</option>";
                             ?> -->
-                        </select>
+                        <!-- </select> -->
                     </div>
                 </div>
                 <div class='row'>
@@ -79,7 +112,7 @@
                         </label>
                     </div>
                     <div class='col-10'>
-                        <textarea name="obs" id="obs" cols="30" rows="10"></textarea>
+                        <textarea name="obs" id="obs" cols="30" rows="10"> <?php echo (isset($contato['obs'])?$contato['obs']:''); ?></textarea>
                     </div>
                 </div>
                 <div class='row'>
@@ -89,13 +122,22 @@
                         </label>
                     </div>
                     <div class='col-10'> 
-                        <input type="checkbox" id='vivo' name='vivo' checked>
+                        <input type="checkbox" id='vivo' name='vivo' <?php echo ($contato['vivo']?'checked':''); ?> >
                     </div>
                 </div>
                 <div class='row'>
-                    <div class='col-12'> 
-                        <button name='acao' id='acao' value='salvar' type='submit'>Salvar</button>    
+                    <div class='col-6'> 
+                        <button name='acao' id='salvar' value='salvar' type='submit'>Salvar</button>    
                     </div>
+                    <div class='col-6'> 
+                    <?php 
+                        if (isset($contato['id'])){
+                            
+                    ?>                    
+                            <button name='acao' id='excluir' value='excluir' type='submit'>Excluir</button>    
+                    <?php } ?>
+                    </div>
+                    
                 </div>
             </form>
         </div>

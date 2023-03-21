@@ -17,7 +17,7 @@ if (!$conexao){
 }else{
     // montar a consulta - aqui é somente o comando como string que será executado - as variáveis indicadas com : no inicio do nome devem ser substituídas pelos valores enviados pelo formulário 
     $consulta = 'INSERT INTO cidade (nome, estado) 
-                VALUES(:nome,:estado )';
+                      VALUES(:nome,:estado )';
     
     // agora prepara o comando para execução - aqui o comando cria um 'objeto' que terá as informações do comando que será executado no BD
     $query = $conexao->prepare($consulta);

@@ -1,9 +1,12 @@
 window.onload = (function (){
-    popularCidades();
+    document.getElementById('cidade').addEventListener('keyup',function(){
+
+        popularCidades(this.value); // enviando o valor do campo como argumento
+    });
 });
 
 
-function popularCidades(){
+function popularCidades(c){ // receber cidade digitada como parâmetro
     let ajax = new XMLHttpRequest();
     ajax.onload = (function(){
         let cidades = JSON.parse(this.responseText);
@@ -11,9 +14,9 @@ function popularCidades(){
         cidades.forEach(cidade => {
             opt += "<option value='"+cidade.id+"'>"+cidade.nome+"</option>";
         });
-        document.getElementById('cidade').innerHTML = opt;
+        document.getElementById('cidades').innerHTML = opt;
     });
     
-    ajax.open('GET','lista_cidades.php');
+    ajax.open('GET','lista_cidades.php?cidade='+c);
     ajax.send();    
 }

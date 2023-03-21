@@ -96,3 +96,26 @@ h2{
     display: block;
     color: red;
 }
+.destaque{
+    color:rgb(244, 148, 29);
+}
+
+.dados:nth-child(even){
+    background-color: antiquewhite;
+}
+
+.dados tr:hover{
+    background-color: darkgray;
+}
+
+.dados tr td{
+    border-bottom: 1px solid black;
+    border-left: 0px;
+    border-right: 0px;
+    padding: 5px;
+}
+
+#id{
+   width: 50px;
+   color:darkgray;
+}
