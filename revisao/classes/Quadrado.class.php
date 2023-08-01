@@ -1,6 +1,4 @@
 <?php
-require_once ('../classes/forma.class.php');
-require_once ('../classes/database.class.php');
     
 class Quadrado extends Forma{
     /**
@@ -51,7 +49,13 @@ class Quadrado extends Forma{
         $params = array();
         if ($tipo > 0)
             $params = array(':info'=>$info);         
-        return Database::listar($sql, $params);
+        $lista = Database::listar($sql, $params);
+        $quadrados = array();
+        foreach($lista as $q){
+            $quadrado = new Quadrado($q['id'], $q['lado'],$q['cor'],$q['un']);
+            array_push($quadrados,$quadrado);
+        }
+        return $quadrados;
      }
 
      public function desenhar(){

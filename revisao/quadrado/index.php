@@ -1,5 +1,6 @@
 <?php
-require_once('../classes/quadrado.class.php');
+require_once('../autoload.php');
+
 $quadrado = new Quadrado('',1,'x','x');
 
 $id = isset($_GET['id'])?$_GET['id']:0;
@@ -53,8 +54,7 @@ if ($id > 0){
     <?php
         
         $lista = $quadrado->listar();
-        foreach($lista as $item){
-            $q = new Quadrado($item['id'],$item['lado'],$item['cor'],$item['un']);
+        foreach($lista as $q){
             echo '<a draggable="true" href="index.php?id='.$q->getId().'">';
             echo $q->desenhar();
             echo '</a>';
