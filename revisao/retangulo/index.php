@@ -20,6 +20,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET'){
         $formulario = str_replace('{cor}','',$formulario);
     }
     print($formulario);
+    include 'listagem.php';
+
 }else if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     // INSERIR OU EDITAR
     $id = isset($_POST['id'])?$_POST['id']:0;
@@ -27,7 +29,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET'){
     $altura = isset($_POST['altura'])?$_POST['altura']:0;
     $cor = isset($_POST['cor'])?$_POST['cor']:'';
     try{
-        $retangulo = new Retangulo($id,$base,$altura,$cor);
         if ($id > 0) // update
             $retangulo->editar();
         else
