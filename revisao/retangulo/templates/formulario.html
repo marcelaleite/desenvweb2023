@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Retângulo</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script src="scripts/script.js"></script>
+    <link rel="stylesheet" href="estilos/estilo.css">
+</head>
+<body>
+    <h1>Cadastro de Retângulo</h1>
+    <span id="msg"> </span>
+    <hr>
+    <form method="POST" id="fcadastro">
+        <fieldset>
+            <legend>Dados</legend>
+            <label for="id">Id:</label>
+            <input type="text" readonly name="id" id='id' value="{id}">
+            <label for="base">Base:</label>
+            <input type="text" name="base" id='base' value="{base}">
+            <label for="altura">Altura:</label>
+            <input type="text" name="altura" id='altura' value="{altura}">
+            <label for="cor">Cor:</label>
+            <input type="color" name="cor" id='cor' value="{cor}">
+            <button type="submit" name="acao" value="salvar">Salvar</button>
+            <button type="submit" name="acao" value="excluir">Excluir</button>
+            <input type="reset" name="acao" value="Limpar">
+        </fieldset>
+    </form>
+    <div id="conteudo"></div>
+</body>
+</html>

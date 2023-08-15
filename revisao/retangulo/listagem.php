@@ -1,9 +1,10 @@
 <?php
+require_once('../autoload.php');
 
 $lista = Retangulo::listar();
 $lst_item = '';
 foreach($lista as $el){
-    $itens = file_get_contents('itens.html');
+    $itens = file_get_contents('templates/itens.html');
     $itens = str_replace('{id}',$el->getId(),$itens);
     $itens = str_replace('{base}',$el->getBase(),$itens);
     $itens = str_replace('{altura}',$el->getAltura(),$itens);
@@ -12,7 +13,7 @@ foreach($lista as $el){
     $lst_item .= $itens;
 }
 
-$listagem = file_get_contents('listagem.html');
+$listagem = file_get_contents('templates/listagem.html');
 $listagem = str_replace('{item}',$lst_item,$listagem);
 print($listagem);
 

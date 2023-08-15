@@ -1,0 +1,13 @@
+.msgSucesso{
+    display:block !important;
+}
+.msgErro{
+    display: block !important;
+    background-color: rgb(237, 198, 198)  !important;
+}
+#msg{
+    background-color: antiquewhite;
+    display: none;
+}
+
+

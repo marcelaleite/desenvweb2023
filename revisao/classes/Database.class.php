@@ -26,11 +26,15 @@ class Database{
 
     public static function preparar($conexao, $sql, $params = array()){
         // ":lado"=>"12"
-        $comando = $conexao->prepare($sql);
-        foreach($params as $chave=>$valor){
-            $comando->bindValue($chave,$valor);
+        try{
+            $comando = $conexao->prepare($sql);
+            foreach($params as $chave=>$valor){
+                $comando->bindValue($chave,$valor);
+            }
+            return $comando;
+        }catch(PDOException $e){
+            echo "Erro ao prepar dados. Erro: ".$e->getMessage();
         }
-        return $comando;
     }
 }
 

@@ -5,7 +5,7 @@ require_once('../autoload.php');
 if ($_SERVER['REQUEST_METHOD'] == 'GET'){
     // APRESENTAR O FORMULÁRIO PARA USUÁRIO
     $id = isset($_GET['id'])?$_GET['id']:0;
-    $formulario = file_get_contents('formulario.html');
+    $formulario = file_get_contents('templates/formulario.html');
     if ($id > 0 ){
         // Apresentar dados
         $retangulo = Retangulo::listar(1,$id)[0];
@@ -29,10 +29,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET'){
     $altura = isset($_POST['altura'])?$_POST['altura']:0;
     $cor = isset($_POST['cor'])?$_POST['cor']:'';
     try{
+        $retangulo = new Retangulo($id,$base,$altura,$cor);
         if ($id > 0) // update
-            $retangulo->editar();
-        else
-            $retangulo->inserir();
+            echo $retangulo->editar();
+        else         // inserir
+            echo $retangulo->inserir();
+        
     }catch(Exception $e){
         echo 'Erro ao atualizar dados: '.$e->getMessage();
     }
